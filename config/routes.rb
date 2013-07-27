@@ -1,4 +1,16 @@
 TowerOfBabel::Application.routes.draw do
+
+
+  resources :user_sessions, :only => [:new, :create]
+  match "login" => "user_sessions#new", :as => "login"
+  match "logout" => "user_sessions#destroy", :as => "logout"
+
+
+  resources :users
+
+  match "login" => "user_sessions#new", :as => "login"
+
+  root :to => 'users#index'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

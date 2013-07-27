@@ -17,7 +17,7 @@ development:
   encoding: unicode
   database: tower_of_babel_development
   pool: 5
-  username: tower_of_babel
+  username: alexlin
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -43,13 +43,15 @@ test:
   encoding: unicode
   database: tower_of_babel_test
   pool: 5
-  username: tower_of_babel
+  username: alexlin
   password:
+  host: localhost
 
 production:
   adapter: postgresql
   encoding: unicode
   database: tower_of_babel_production
   pool: 5
-  username: tower_of_babel
+  username: alexlin
   password:
+  host: localhost
