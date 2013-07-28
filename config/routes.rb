@@ -1,14 +1,16 @@
 TowerOfBabel::Application.routes.draw do
 
 
+
   resources :user_sessions, :only => [:new, :create]
   match "login" => "user_sessions#new", :as => "login"
   match "logout" => "user_sessions#destroy", :as => "logout"
 
-
+  match "users/edit" => "users#edit", :as => "edit_profile"
   resources :users
 
-  match "login" => "user_sessions#new", :as => "login"
+  get "messages/inbox" => "messages#inbox", :as => "inbox"
+  resources :messages
 
   root :to => 'users#index'
   # The priority is based upon order of creation:

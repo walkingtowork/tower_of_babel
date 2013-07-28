@@ -1,0 +1,9 @@
+%h1
+  = @message.sender.username
+  says:
+.message_box
+  %p= @message.content
+  %p *****
+
+  %p Send a reply?
+  = render 'reply_form'

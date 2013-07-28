@@ -1,0 +1,8 @@
+%h1 Inbox
+
+- @messages.each do |message|
+  .inbox_row
+    / = image_tag message.sender.image, :class => "user_index_thumb"
+    = message.sender.username
+    = link_to message.subject, message
+    %br
