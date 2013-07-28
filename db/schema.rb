@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130728102054) do
+ActiveRecord::Schema.define(:version => 20130728104038) do
 
   create_table "messages", :force => true do |t|
     t.integer  "sender_id"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20130728102054) do
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "image"
   end
 
 end

@@ -9,6 +9,9 @@ gem 'pg'
 
 gem 'sorcery'
 gem 'geocoder'
+gem 'carrierwave'
+gem "fog", "~> 1.3.1"
+gem 'rmagick'
 
 
 group :development do
@@ -40,7 +43,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # gem 'jbuilder'
 
 # Use unicorn as the app server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'
