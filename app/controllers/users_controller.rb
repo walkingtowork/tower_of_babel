@@ -3,11 +3,18 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    if params[:location_search].present?
+      @users = User.near(params[:location_search], 30, :order => :distance)
+      # Finds users within 30 miles
+      @users.select!{|x| x.known_languages.map(&:name).include?(params[:language_search])}
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @users }
+    else
+      @users = User.all
+
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @users }
+      end
     end
   end
 
@@ -26,6 +33,8 @@ class UsersController < ApplicationController
   # GET /users/new.json
   def new
     @user = User.new
+    @known_languages = KnownLanguage.all
+    @desired_languages = DesiredLanguage.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,7 +44,9 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
+    @known_languages = KnownLanguage.all
+    @desired_languages = DesiredLanguage.all
   end
 
   # POST /users

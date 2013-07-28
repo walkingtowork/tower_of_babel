@@ -10,7 +10,21 @@ User Page
 %p
   %b Location:
   = @user.address
-
+/ %p
+/   %b Gender:
+/   = @user.gender
+%p
+  %b Known Languages:
+  - known_languages = @user.known_languages.map { |language| language.name }
+  %ul
+    -known_languages.each do |language|
+      %li= language
+%p
+  %b Desired Languages:
+  - desired_languages = @user.desired_languages.map { |language| language.name }
+  %ul
+    -desired_languages.each do |language|
+      %li= language
 %br
   = link_to 'Say Hi!', new_message_path(:user_id => @user.id)
   \|
