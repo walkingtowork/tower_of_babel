@@ -1,0 +1,75 @@
+= form_for @user, :html_options => {:multipart => true} do |f|
+  - if @user.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
+  .first_row
+    .edit_box
+      .field
+        = f.label :username
+        %br
+        = f.text_field :username
+      .field
+        = f.label :email
+        %br
+        = f.text_field :email
+      / .field
+      /   = f.label :password
+      /   = f.password_field :password
+      / .field
+      /   = f.label :password_confirmation
+      /   = f.password_field :password_confirmation
+      / .field
+      /   = f.label :profile_picture
+      /   %br
+      /   = f.file_field :image
+      / .field
+      /   = f.label :gender
+      /   %br
+      /   = f.label "Male"
+      /   = f.radio_button :gender, "Male"
+      /   = f.label "Female"
+      /   = f.radio_button :gender, "Female"
+      .field
+        = f.label :address
+        %br
+        = f.text_field :address
+  /   .edit_box
+  /     .field
+  /       = f.label :known_languages
+  /       %br
+  /       %div.scrollable_list
+  /         - @known_languages.each do |language|
+  /           %div.label_input_pair
+  /             = check_box_tag "user[known_language_ids][]",language.id, @user.known_languages.include?(language)
+  /             = f.label "#{language.name}"
+  /   .edit_box
+  /     .field.desired_languages
+  /       = f.label :desired_languages
+  /       %br
+  /       %div.scrollable_list
+  /         - @desired_languages.each do |language|
+  /           %div.label_input_pair
+  /           = check_box_tag "user[desired_language_ids][]",language.id, @user.desired_languages.include?(language)
+  /           = f.label "#{language.name}"
+  /           %br
+  / %br
+  / .text_box
+  /   .field
+  /     = f.label "about_me:"
+  /     %br
+  /     = f.text_area :about_me, :cols => 100
+  / .text_box
+  /   .field
+  /     = f.label "hobbies:"
+  /     %br
+  /     = f.text_area :about_me, :cols => 100
+  / .text_box
+  /   .field
+  /     = f.label "Somewhere awesome:"
+  /     %br
+  /     = f.text_area :place_to_visit, :cols => 100
+  .actions
+    = f.submit 'Update'
